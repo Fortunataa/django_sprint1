@@ -49,12 +49,12 @@ def index(request):
     context = {
         'posts': reversed(posts)
     }
-    return render(request, 'blog/index.html', context) 
+    return render(request, 'blog/index.html', context)
 
 
 def post_detail(request, id):
     post = None
-    for post_item in posts:  
+    for post_item in posts:
         if post_item['id'] == id:
             post = post_item
             break
@@ -63,11 +63,11 @@ def post_detail(request, id):
         'post': post
     }
 
-    return render(request, 'blog/detail.html', context) 
+    return render(request, 'blog/detail.html', context)
 
 
 def category_posts(request, category_slug):
     context = {
         'category': category_slug,
     }
-    return render(request, 'blog/category.html', context) 
+    return render(request, 'blog/category.html', context)
