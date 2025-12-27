@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 
 posts = [
     {
@@ -58,6 +59,9 @@ def post_detail(request, id):
         if post_item['id'] == id:
             post = post_item
             break
+
+    if post is None:
+        raise Http404("Пост не найден")
 
     context = {
         'post': post
