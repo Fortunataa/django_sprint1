@@ -47,16 +47,16 @@ posts = [
 # Create your views here.
 def index(request):
     context = {
-        'posts': posts
+        'posts': reversed(posts)
     }
     return render(request, 'blog/index.html', context) 
 
 
 def post_detail(request, id):
     post = None
-    for i in post:
-        if i['id'] == id:
-            post = i
+    for post_item in posts:  
+        if post_item['id'] == id:
+            post = post_item
             break
 
     context = {
@@ -67,12 +67,7 @@ def post_detail(request, id):
 
 
 def category_posts(request, category_slug):
-    posts = []
-    for i in posts:
-        if i['category'] == category_slug:
-            posts.append(i)
     context = {
-        'posts': posts,
         'category': category_slug,
     }
     return render(request, 'blog/category.html', context) 
